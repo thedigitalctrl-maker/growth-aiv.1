@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { MessageSquare, Type, Users, FileText } from 'lucide-react'
+import { MessageSquare, Type, Users, FileText, ExternalLink } from 'lucide-react'
 import CommentAssistant from './components/CommentAssistant'
 import BoldTextMaker from './components/BoldTextMaker'
 import SmartConnect from './components/SmartConnect'
@@ -37,14 +37,25 @@ function App() {
       {/* Header */}
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 py-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">G</span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">G</span>
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-gray-900">Growth AI</h1>
+                <p className="text-sm text-gray-500">Professional LinkedIn Tools</p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-xl font-bold text-gray-900">Growth AI</h1>
-              <p className="text-sm text-gray-500">Professional LinkedIn Tools</p>
-            </div>
+            <a
+              href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary border border-primary rounded-lg hover:bg-primary hover:text-white transition-colors"
+            >
+              <ExternalLink size={16} />
+              Feedback
+            </a>
           </div>
         </div>
       </header>
