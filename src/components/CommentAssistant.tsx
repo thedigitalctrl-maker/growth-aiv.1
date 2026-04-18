@@ -64,28 +64,28 @@ function CommentAssistant() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">LinkedIn Comment Assistant</h2>
-        <p className="text-gray-600 mb-6">
+      <div className="glass-card p-6 rounded-xl">
+        <h2 className="text-lg font-semibold text-white mb-2">Comment Assistant</h2>
+        <p className="text-slate-400 mb-6">
           Paste a LinkedIn post and generate thoughtful, engaging comments tailored to your preferred tone.
         </p>
 
         {/* Post Input */}
         <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-slate-300 mb-2">
             LinkedIn Post Content
           </label>
           <textarea
             value={postContent}
             onChange={(e) => setPostContent(e.target.value)}
             placeholder="Paste the LinkedIn post content here..."
-            className="w-full h-40 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-blue-600 resize-none text-gray-900"
+            className="w-full h-40 px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 resize-none text-white placeholder-slate-600"
           />
         </div>
 
         {/* Tone Selection */}
         <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-slate-300 mb-2">
             Select Tone
           </label>
           <div className="flex flex-wrap gap-2">
@@ -93,10 +93,10 @@ function CommentAssistant() {
               <button
                 key={tone.id}
                 onClick={() => setSelectedTone(tone.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   selectedTone === tone.id
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-lg shadow-cyan-500/20'
+                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'
                 }`}
               >
                 {tone.label}
@@ -109,12 +109,12 @@ function CommentAssistant() {
         <button
           onClick={handleGenerate}
           disabled={!postContent.trim() || isGenerating}
-          className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-cyan-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
         >
           {isGenerating ? (
             <>
               <RefreshCw size={18} className="animate-spin" />
-              Generating suggestions...
+              Generating...
             </>
           ) : (
             <>
@@ -127,18 +127,18 @@ function CommentAssistant() {
 
       {/* Suggestions */}
       {suggestions.length > 0 && (
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Generated Comments</h3>
+        <div className="glass-card p-6 rounded-xl">
+          <h3 className="text-lg font-semibold text-white mb-4">Generated Comments</h3>
           <div className="space-y-4">
             {suggestions.map((suggestion, index) => (
               <div
                 key={index}
-                className="p-4 bg-gray-50 rounded-lg border border-gray-200"
+                className="p-4 bg-slate-900 border border-slate-700 rounded-lg hover:border-cyan-500/30 transition-colors"
               >
-                <p className="text-gray-800 mb-3">{suggestion}</p>
+                <p className="text-slate-200 mb-3">{suggestion}</p>
                 <button
                   onClick={() => handleCopy(suggestion, index)}
-                  className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 transition-colors"
+                  className="flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
                 >
                   {copiedIndex === index ? (
                     <>

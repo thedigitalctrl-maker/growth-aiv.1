@@ -41,10 +41,11 @@ function App() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-2 border-blue-600 border-t-transparent mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading Growth AI...</p>
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-transparent to-cyan-600 opacity-10"></div>
+        <div className="text-center relative z-10">
+          <div className="animate-spin rounded-full h-12 w-12 border-2 border-blue-500 border-t-cyan-400 mx-auto mb-4"></div>
+          <p className="text-gray-300 font-medium">Loading Growth AI...</p>
         </div>
       </div>
     )
@@ -70,35 +71,41 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 flex flex-col relative">
+      {/* Animated gradient background */}
+      <div className="fixed inset-0 opacity-30 pointer-events-none z-0">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-screen filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500 rounded-full mix-blend-screen filter blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+      </div>
+
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <header className="glass-card border-b sticky top-0 z-50 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20">
                 <span className="text-white font-bold text-lg">G</span>
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">Growth AI</h1>
-                <p className="text-sm text-gray-500">Professional LinkedIn Growth Tools</p>
+                <h1 className="text-xl font-bold text-white">Growth AI</h1>
+                <p className="text-xs text-cyan-400">Professional LinkedIn Growth Tools</p>
               </div>
             </div>
             <a
               href="https://forms.gle/D7iWUJ9tJ8yWYFuN7"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-cyan-400 border border-cyan-400/50 rounded-lg hover:bg-cyan-400/10 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 transition-all"
             >
               <ExternalLink size={16} />
-              Give Feedback
+              Feedback
             </a>
           </div>
         </div>
       </header>
 
       {/* Tab Navigation */}
-      <nav className="bg-white border-b border-gray-200">
+      <nav className="glass-card border-b backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex gap-1 overflow-x-auto">
             {tabs.map((tab) => {
@@ -107,10 +114,10 @@ function App() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 transition-colors ${
+                  className={`flex items-center gap-2 px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 transition-all ${
                     activeTab === tab.id
-                      ? 'border-blue-600 text-blue-600'
-                      : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
+                      ? 'border-cyan-400 text-cyan-400 shadow-lg shadow-cyan-500/20'
+                      : 'border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-500'
                   }`}
                 >
                   <Icon size={18} />
@@ -123,21 +130,21 @@ function App() {
       </nav>
 
       {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 py-8 flex-1 w-full">
+      <main className="max-w-6xl mx-auto px-4 py-8 flex-1 w-full relative z-10">
         {renderContent()}
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-auto">
+      <footer className="glass-card border-t backdrop-blur-xl mt-auto">
         <div className="max-w-6xl mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
+          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-slate-400">
             <div className="text-center md:text-left mb-4 md:mb-0">
               Growth AI - Professional LinkedIn Growth Tools
             </div>
             <div className="flex gap-6 text-center md:text-right">
-              <a href="#" className="hover:text-gray-900 transition-colors">Privacy</a>
-              <a href="#" className="hover:text-gray-900 transition-colors">Terms</a>
-              <a href="https://forms.gle/D7iWUJ9tJ8yWYFuN7" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 transition-colors">Feedback</a>
+              <a href="#" className="hover:text-cyan-400 transition-colors">Privacy</a>
+              <a href="#" className="hover:text-cyan-400 transition-colors">Terms</a>
+              <a href="https://forms.gle/D7iWUJ9tJ8yWYFuN7" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">Feedback</a>
             </div>
           </div>
         </div>

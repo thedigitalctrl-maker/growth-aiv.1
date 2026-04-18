@@ -56,22 +56,22 @@ function BoldTextMaker() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Bold Text Maker</h2>
-        <p className="text-gray-600 mb-6">
+      <div className="glass-card p-6 rounded-xl">
+        <h2 className="text-lg font-semibold text-white mb-2">Bold Text Maker</h2>
+        <p className="text-slate-400 mb-6">
           Convert text to bold Unicode characters that work on LinkedIn and most platforms.
         </p>
 
         {/* Input */}
         <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-slate-300 mb-2">
             Type or Paste Text
           </label>
           <textarea
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             placeholder="Type or paste your text here..."
-            className="w-full h-32 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-blue-600 resize-none text-gray-900"
+            className="w-full h-32 px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 resize-none text-white placeholder-slate-600"
           />
         </div>
 
@@ -79,12 +79,12 @@ function BoldTextMaker() {
         {inputText && (
           <div className="space-y-4">
             {/* Mathematical Bold */}
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="p-4 bg-slate-900 border border-slate-700 rounded-lg hover:border-cyan-500/30 transition-colors">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-gray-700">Mathematical Bold</span>
+                <span className="text-sm font-medium text-slate-300">Mathematical Bold</span>
                 <button
                   onClick={() => handleCopy(mathBoldText, 'math')}
-                  className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 transition-colors"
+                  className="flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
                 >
                   {copiedType === 'math' ? (
                     <>
@@ -99,16 +99,16 @@ function BoldTextMaker() {
                   )}
                 </button>
               </div>
-              <p className="text-lg text-gray-900 break-words">{mathBoldText}</p>
+              <p className="text-lg text-cyan-300 break-words font-semibold">{mathBoldText}</p>
             </div>
 
             {/* Sans-Serif Bold */}
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="p-4 bg-slate-900 border border-slate-700 rounded-lg hover:border-cyan-500/30 transition-colors">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-gray-700">Sans-Serif Bold</span>
+                <span className="text-sm font-medium text-slate-300">Sans-Serif Bold</span>
                 <button
                   onClick={() => handleCopy(sansBoldText, 'sans')}
-                  className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 transition-colors"
+                  className="flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
                 >
                   {copiedType === 'sans' ? (
                     <>
@@ -123,16 +123,16 @@ function BoldTextMaker() {
                   )}
                 </button>
               </div>
-              <p className="text-lg text-gray-900 break-words">{sansBoldText}</p>
+              <p className="text-lg text-cyan-300 break-words font-semibold">{sansBoldText}</p>
             </div>
           </div>
         )}
       </div>
 
       {/* Tips */}
-      <div className="bg-blue-50 rounded-xl p-6 border border-blue-100">
-        <h3 className="font-semibold text-blue-900 mb-2">Unlimited Usage</h3>
-        <p className="text-sm text-blue-800">
+      <div className="glass-card p-6 rounded-xl border-l-2 border-l-cyan-400">
+        <h3 className="font-semibold text-cyan-400 mb-2">Unlimited Usage</h3>
+        <p className="text-sm text-slate-300">
           Use the Bold Text Maker unlimited times. Perfect for creating impactful headlines and key phrases on LinkedIn.
         </p>
       </div>
