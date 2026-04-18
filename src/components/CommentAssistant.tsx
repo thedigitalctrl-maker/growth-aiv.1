@@ -2,39 +2,39 @@ import React, { useState } from 'react'
 import { Copy, Check, Sparkles, RefreshCw } from 'lucide-react'
 
 const tones = [
+  { id: 'humorous', label: 'Humorous' },
+  { id: 'funny', label: 'Funny' },
+  { id: 'debate', label: 'Debate' },
   { id: 'professional', label: 'Professional' },
-  { id: 'supportive', label: 'Supportive' },
-  { id: 'curious', label: 'Curious' },
-  { id: 'insightful', label: 'Insightful' },
-  { id: 'enthusiastic', label: 'Enthusiastic' },
+  { id: 'general', label: 'General Short' },
 ]
 
 const generateComments = (postContent: string, tone: string): string[] => {
   const templates: Record<string, string[]> = {
+    humorous: [
+      `Plot twist: You are absolutely right about this. Enjoyed reading this perspective!`,
+      `If I had a dollar for every time I thought this exact thing... Great insights here.`,
+      `This is the kind of content that makes scrolling through LinkedIn worthwhile.`,
+    ],
+    funny: [
+      `Nailed it. Could not have said it better myself - and trust me, I tried.`,
+      `This needs to be printed and handed out everywhere. Taking notes over here.`,
+      `In other words: perfection. Well done on articulating what everyone is thinking.`,
+    ],
+    debate: [
+      `Interesting perspective, though I would argue the real challenge lies in implementation. What are your thoughts on scalability here?`,
+      `Valid points, but consider the counterargument: the market dynamics suggest otherwise. Would love your take on this.`,
+      `Strong argument overall, though I think we are overlooking a critical factor. Have you considered the downstream implications?`,
+    ],
     professional: [
-      `This is a valuable perspective on ${postContent.slice(0, 30)}... The strategic implications here are significant for industry professionals.`,
-      `Great analysis. Your point about this topic aligns well with current market trends and best practices.`,
-      `Thank you for sharing this insight. It reinforces the importance of continuous learning in our field.`,
+      `This aligns well with current industry best practices. Your strategic perspective here is valuable for the community.`,
+      `Thoughtful analysis. The implications for our field are significant and worth considering carefully.`,
+      `Excellent point. This reinforces the importance of continued collaboration and knowledge sharing in our domain.`,
     ],
-    supportive: [
-      `Love this! Your journey and insights are truly inspiring. Keep sharing your valuable experiences.`,
-      `This resonates deeply. Thank you for being open about your experiences - it helps so many of us.`,
-      `What an amazing perspective! Your authenticity shines through and motivates others to do the same.`,
-    ],
-    curious: [
-      `Fascinating take! I am curious - how do you see this evolving in the next few years?`,
-      `Interesting perspective. What challenges did you face when implementing this approach?`,
-      `Great insights here. Would love to hear more about the specific strategies that worked best for you.`,
-    ],
-    insightful: [
-      `This connects well with broader industry shifts we are seeing. The underlying pattern here suggests significant opportunities.`,
-      `Building on your point - this also ties into the growing emphasis on sustainable practices in our sector.`,
-      `Your observation highlights a critical gap many overlook. The implications extend beyond just this context.`,
-    ],
-    enthusiastic: [
-      `Absolutely brilliant! This is exactly the kind of forward-thinking approach our industry needs!`,
-      `Yes! This is spot on. Cannot agree more with your perspective here - game changing insights!`,
-      `This is fantastic! Your energy and vision come through clearly. Excited to see where this leads!`,
+    general: [
+      `Great share. Appreciate you bringing this to the attention of everyone.`,
+      `Solid insights. Thanks for contributing to this important discussion.`,
+      `Well put. This is the kind of perspective our industry needs.`,
     ],
   }
   return templates[tone] || templates.professional
@@ -53,7 +53,7 @@ function CommentAssistant() {
     setTimeout(() => {
       setSuggestions(generateComments(postContent, selectedTone))
       setIsGenerating(false)
-    }, 800)
+    }, 1200)
   }
 
   const handleCopy = async (text: string, index: number) => {
@@ -79,7 +79,7 @@ function CommentAssistant() {
             value={postContent}
             onChange={(e) => setPostContent(e.target.value)}
             placeholder="Paste the LinkedIn post content here..."
-            className="w-full h-40 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary resize-none text-gray-900"
+            className="w-full h-40 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-blue-600 resize-none text-gray-900"
           />
         </div>
 
@@ -95,7 +95,7 @@ function CommentAssistant() {
                 onClick={() => setSelectedTone(tone.id)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   selectedTone === tone.id
-                    ? 'bg-primary text-white'
+                    ? 'bg-blue-600 text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
@@ -109,17 +109,17 @@ function CommentAssistant() {
         <button
           onClick={handleGenerate}
           disabled={!postContent.trim() || isGenerating}
-          className="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           {isGenerating ? (
             <>
               <RefreshCw size={18} className="animate-spin" />
-              Generating...
+              Generating suggestions...
             </>
           ) : (
             <>
               <Sparkles size={18} />
-              Generate Comments
+              Generate Suggestions
             </>
           )}
         </button>
@@ -138,7 +138,7 @@ function CommentAssistant() {
                 <p className="text-gray-800 mb-3">{suggestion}</p>
                 <button
                   onClick={() => handleCopy(suggestion, index)}
-                  className="flex items-center gap-2 text-sm text-primary hover:text-opacity-80 transition-colors"
+                  className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 transition-colors"
                 >
                   {copiedIndex === index ? (
                     <>

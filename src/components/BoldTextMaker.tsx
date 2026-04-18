@@ -57,26 +57,21 @@ function BoldTextMaker() {
   return (
     <div className="space-y-6">
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center">
-            <Type className="text-primary" size={20} />
-          </div>
-          <div>
-            <h2 className="text-lg font-semibold text-gray-900">Bold Text Maker</h2>
-            <p className="text-sm text-gray-500">Convert text to bold Unicode characters for LinkedIn</p>
-          </div>
-        </div>
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">Bold Text Maker</h2>
+        <p className="text-gray-600 mb-6">
+          Convert text to bold Unicode characters that work on LinkedIn and most platforms.
+        </p>
 
         {/* Input */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Enter Your Text
+            Type or Paste Text
           </label>
           <textarea
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             placeholder="Type or paste your text here..."
-            className="w-full h-32 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary resize-none text-gray-900"
+            className="w-full h-32 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-blue-600 resize-none text-gray-900"
           />
         </div>
 
@@ -89,7 +84,7 @@ function BoldTextMaker() {
                 <span className="text-sm font-medium text-gray-700">Mathematical Bold</span>
                 <button
                   onClick={() => handleCopy(mathBoldText, 'math')}
-                  className="flex items-center gap-2 text-sm text-primary hover:text-opacity-80 transition-colors"
+                  className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 transition-colors"
                 >
                   {copiedType === 'math' ? (
                     <>
@@ -113,7 +108,7 @@ function BoldTextMaker() {
                 <span className="text-sm font-medium text-gray-700">Sans-Serif Bold</span>
                 <button
                   onClick={() => handleCopy(sansBoldText, 'sans')}
-                  className="flex items-center gap-2 text-sm text-primary hover:text-opacity-80 transition-colors"
+                  className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 transition-colors"
                 >
                   {copiedType === 'sans' ? (
                     <>
@@ -136,13 +131,10 @@ function BoldTextMaker() {
 
       {/* Tips */}
       <div className="bg-blue-50 rounded-xl p-6 border border-blue-100">
-        <h3 className="font-semibold text-blue-900 mb-2">Pro Tips</h3>
-        <ul className="text-sm text-blue-800 space-y-1">
-          <li>Use bold text sparingly for headlines and key phrases</li>
-          <li>Mathematical Bold works best for professional content</li>
-          <li>Sans-Serif Bold has a modern, clean appearance</li>
-          <li>These characters work on LinkedIn, Twitter, and most platforms</li>
-        </ul>
+        <h3 className="font-semibold text-blue-900 mb-2">Unlimited Usage</h3>
+        <p className="text-sm text-blue-800">
+          Use the Bold Text Maker unlimited times. Perfect for creating impactful headlines and key phrases on LinkedIn.
+        </p>
       </div>
     </div>
   )
