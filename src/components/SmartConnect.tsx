@@ -63,37 +63,30 @@ function SmartConnect() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 bg-linkedin bg-opacity-10 rounded-lg flex items-center justify-center">
-            <User className="text-linkedin" size={20} />
-          </div>
-          <div>
-            <h2 className="text-lg font-semibold text-gray-900">Smart Connect</h2>
-            <p className="text-sm text-gray-500">Analyze LinkedIn profiles and get personalized connection suggestions</p>
-          </div>
-        </div>
+      <div className="glass-card rounded-xl p-6">
+        <h2 className="text-lg font-semibold text-white mb-2">Smart Connect</h2>
+        <p className="text-slate-400 mb-6">Analyze LinkedIn profiles and get personalized connection suggestions</p>
 
         {/* URL Input */}
         <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-slate-300 mb-2">
             LinkedIn Profile URL
           </label>
           <div className="flex gap-3">
             <div className="flex-1 relative">
-              <ExternalLink className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+              <ExternalLink className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-600" size={18} />
               <input
                 type="url"
                 value={profileUrl}
                 onChange={(e) => setProfileUrl(e.target.value)}
                 placeholder="https://linkedin.com/in/username"
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-linkedin focus:border-linkedin text-gray-900"
+                className="w-full pl-10 pr-4 py-3 bg-slate-900 border border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 text-white placeholder-slate-600"
               />
             </div>
             <button
               onClick={handleAnalyze}
               disabled={!profileUrl.trim() || isAnalyzing}
-              className="flex items-center gap-2 px-6 py-3 bg-linkedin text-white rounded-lg font-medium hover:bg-opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-cyan-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
             >
               {isAnalyzing ? (
                 <>
@@ -115,51 +108,51 @@ function SmartConnect() {
       {analysis && (
         <>
           {/* Profile Summary */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Profile Summary</h3>
+          <div className="glass-card rounded-xl p-6">
+            <h3 className="text-lg font-semibold text-white mb-4">Profile Summary</h3>
             <div className="flex items-start gap-4">
-              <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center">
-                <User className="text-gray-500" size={32} />
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-full flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                <User className="text-white" size={32} />
               </div>
               <div>
-                <h4 className="text-xl font-semibold text-gray-900">{analysis.name}</h4>
-                <p className="text-gray-600">{analysis.headline}</p>
+                <h4 className="text-xl font-semibold text-white">{analysis.name}</h4>
+                <p className="text-slate-400">{analysis.headline}</p>
                 <div className="flex items-center gap-2 mt-2">
-                  <Briefcase size={14} className="text-gray-400" />
-                  <span className="text-sm text-gray-500">{analysis.industry}</span>
+                  <Briefcase size={14} className="text-cyan-400" />
+                  <span className="text-sm text-slate-400">{analysis.industry}</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Connection Points */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Connection Points</h3>
+          <div className="glass-card rounded-xl p-6">
+            <h3 className="text-lg font-semibold text-white mb-4">Connection Points</h3>
             <ul className="space-y-3">
               {analysis.connectionPoints.map((point, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-green-600 text-sm font-medium">{index + 1}</span>
+                  <div className="w-6 h-6 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 shadow-lg shadow-cyan-500/20">
+                    <span className="text-white text-sm font-medium">{index + 1}</span>
                   </div>
-                  <span className="text-gray-700">{point}</span>
+                  <span className="text-slate-300">{point}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           {/* Message Templates */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div className="glass-card rounded-xl p-6">
             <div className="flex items-center gap-2 mb-4">
-              <MessageSquare size={20} className="text-primary" />
-              <h3 className="text-lg font-semibold text-gray-900">Suggested Connection Messages</h3>
+              <MessageSquare size={20} className="text-cyan-400" />
+              <h3 className="text-lg font-semibold text-white">Suggested Connection Messages</h3>
             </div>
             <div className="space-y-4">
               {analysis.messageTemplates.map((template, index) => (
-                <div key={index} className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                  <p className="text-gray-800 mb-3">{template}</p>
+                <div key={index} className="p-4 bg-slate-900 border border-slate-700 rounded-lg hover:border-cyan-500/30 transition-colors">
+                  <p className="text-slate-300 mb-3">{template}</p>
                   <button
                     onClick={() => handleCopy(template, index)}
-                    className="text-sm text-primary hover:text-opacity-80 transition-colors"
+                    className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
                   >
                     {copiedIndex === index ? 'Copied!' : 'Copy message'}
                   </button>
